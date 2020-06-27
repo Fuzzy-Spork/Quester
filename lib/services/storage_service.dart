@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:iiitdmjcompanion/models/user/user.dart';
+import 'package:quester/models/user/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
@@ -43,8 +43,7 @@ class StorageService {
 
   void deleteKey(String key) {
     print(
-        '(TRACE) StorageService: deleteKey. key: $key value: ${_getFromDisk(
-            key)}');
+        '(TRACE) StorageService: deleteKey. key: $key value: ${_getFromDisk(key)}');
     _sharedPreferences.remove(key);
   }
 
