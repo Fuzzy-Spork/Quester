@@ -6,10 +6,18 @@ class DashBoard extends StatefulWidget {
   _DashBoardState createState() => _DashBoardState();
 }
 
-class _DashBoardState extends State<DashBoard> {
+class _DashBoardState extends State<DashBoard>
+    with SingleTickerProviderStateMixin {
+  TabController _controller;
+  @override
+  void initState() {
+    super.initState();
+    _controller = TabController(vsync: this, length: 3);
+  }
+
   @override
   Widget build(BuildContext context) {
-    var height = 0.0;
+    var height = 10.0;
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -17,7 +25,7 @@ class _DashBoardState extends State<DashBoard> {
         body: Column(
           children: [
             Container(
-              height: size.height * 0.22,
+              height: size.height * 0.25,
               width: size.width,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,12 +46,12 @@ class _DashBoardState extends State<DashBoard> {
                       )
                     ],
                   ),
-                  Spacer(),
+                  //Spacer(),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 20),
                         child: Text(
                           'Hey',
                           textAlign: TextAlign.left,
@@ -62,7 +70,7 @@ class _DashBoardState extends State<DashBoard> {
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 25,
-                              fontWeight: FontWeight.w100),
+                              fontWeight: FontWeight.w400),
                         ),
                       )
                     ],
@@ -74,7 +82,7 @@ class _DashBoardState extends State<DashBoard> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 20),
                         child: Text(
                           'Level',
                           textAlign: TextAlign.left,
@@ -88,19 +96,85 @@ class _DashBoardState extends State<DashBoard> {
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
                         child: Text(
-                          '2'.toUpperCase(),
+                          '2',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               color: Colors.white70,
                               fontSize: 15,
-                              fontWeight: FontWeight.w300),
+                              fontWeight: FontWeight.w700),
                         ),
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
-                  )
+
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, right: 10, left: 20),
+                            child: Text(
+                              'Level Up',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 0, right: 50),
+                        child: SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            thumbColor: Color(0xFFEB1555),
+                            activeTrackColor: Colors.white,
+                            inactiveTrackColor: Colors.white,
+                            overlayColor: Color(0x29EB1555),
+                            thumbShape:
+                                RoundSliderThumbShape(enabledThumbRadius: 13.0),
+                            overlayShape:
+                                RoundSliderOverlayShape(overlayRadius: 20.0),
+                          ),
+                          child: Slider(
+                            onChanged: (x) {},
+                            value: height,
+                            min: 0.0,
+                            max: 100.0,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Text(
+                              '0',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 70),
+                            child: Text(
+                              '100',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -109,79 +183,44 @@ class _DashBoardState extends State<DashBoard> {
                 height: size.height * 0.67,
                 width: size.width,
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius:
-                        BorderRadius.only(topLeft: Radius.circular(80))),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                ),
                 child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 15, right: 10),
-                          child: Text(
-                            'Level Up',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
+                  children: <Widget>[
+                    Container(
+                      child: TabBar(
+                        labelColor: Colors.black,
+                        controller: _controller,
+                        tabs: <Widget>[
+                          Tab(
+                            text: 'Active',
                           ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50, right: 10),
-                      child: SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                          thumbColor: Color(0xFFEB1555),
-                          activeTrackColor: Colors.white,
-                          inactiveTrackColor: Color(0xFF09144B),
-                          overlayColor: Color(0x29EB1555),
-                          thumbShape:
-                              RoundSliderThumbShape(enabledThumbRadius: 13.0),
-                          overlayShape:
-                              RoundSliderOverlayShape(overlayRadius: 20.0),
-                        ),
-                        child: Slider(
-                          value: height,
-                          min: 0.0,
-                          max: 100.0,
-                          onChanged: (double newValue) {
-                            setState(() {
-                              height = newValue;
-                            });
-                          },
-                        ),
+                          Tab(text: 'Daily'),
+                          Tab(text: 'Completed')
+                        ],
                       ),
                     ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 60),
-                          child: Text(
-                            '0',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    Container(
+                      height: 80.0,
+                      child: new TabBarView(
+                        controller: _controller,
+                        children: <Widget>[
+                          ListView(
+                            children: getActive(),
                           ),
-                        ),
-                        Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Text(
-                            '100',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          ListView(
+                            children: getDaily(),
                           ),
-                        )
-                      ],
-                    )
+                          ListView(
+                            children: getDaily(),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -190,5 +229,33 @@ class _DashBoardState extends State<DashBoard> {
         ),
       ),
     );
+  }
+
+  List<Widget> getActive() {
+    List<Widget> lists = [
+      Card(
+        child: Text(
+          'Yay Mission 1',
+          style: TextStyle(color: Colors.black),
+        ),
+      )
+    ];
+    return lists;
+  }
+
+  List<Widget> getDaily() {
+    List<Widget> lists = [];
+    return lists;
+  }
+
+  List<Widget> getCompleted() {
+    List<Widget> lists = [];
+    return lists;
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
