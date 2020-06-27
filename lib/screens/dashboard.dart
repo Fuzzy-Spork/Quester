@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:quester/components/mission_card.dart';
+import 'package:quester/models/mission/mission.dart';
+import 'bottom_sheet.dart';
 
 class DashBoard extends StatefulWidget {
   @override
@@ -10,7 +12,7 @@ class DashBoard extends StatefulWidget {
 class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
-    var height = 0.0;
+    var height = 50.0;
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -136,13 +138,13 @@ class _DashBoardState extends State<DashBoard> {
                       child: SliderTheme(
                         data: SliderTheme.of(context).copyWith(
                           thumbColor: Color(0xFFEB1555),
-                          activeTrackColor: Colors.white,
-                          inactiveTrackColor: Color(0xFF09144B),
+                          activeTrackColor: Color(0xFF09144B),
+                          inactiveTrackColor: Colors.grey,
                           overlayColor: Color(0x29EB1555),
                           thumbShape:
                               RoundSliderThumbShape(enabledThumbRadius: 13.0),
                           overlayShape:
-                              RoundSliderOverlayShape(overlayRadius: 20.0),
+                              RoundSliderOverlayShape(overlayRadius: 13.0),
                         ),
                         child: Slider(
                           value: height,
@@ -182,7 +184,231 @@ class _DashBoardState extends State<DashBoard> {
                           ),
                         )
                       ],
-                    )
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15, left: 10),
+                          child: Text(
+                            'Daily Missions',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: SizedBox(
+                        height: size.height * 0.2,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15, left: 10),
+                          child: Text(
+                            'Active Missions',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: SizedBox(
+                        height: size.height * 0.2,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                            MissionCard(
+                              mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                bottom: MediaQuery.of(context)
+                                                    .viewInsets
+                                                    .bottom),
+                                            child: BottomSheet1(),
+                                          ),
+                                        ));
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

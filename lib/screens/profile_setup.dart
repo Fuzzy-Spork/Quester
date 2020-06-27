@@ -104,7 +104,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                     builder: (context) {
                       return DashBoard(
 //                        user: user,
-                      );
+                          );
                     },
                   ),
                 );

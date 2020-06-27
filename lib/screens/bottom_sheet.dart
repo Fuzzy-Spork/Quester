@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class BottomSheet1 extends StatelessWidget {
-  String newTaskTitle;
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
