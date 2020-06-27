@@ -12,6 +12,7 @@ class StorageService {
 
   User get userInDB {
     var userJson = _getFromDisk(UserKey);
+    print(User.fromJson(jsonDecode(userJson)).name);
     return User.fromJson(jsonDecode(userJson));
   }
 

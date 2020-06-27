@@ -3,7 +3,7 @@ import 'mission.dart';
 List<Mission> missions = [
   Mission(
     id: 'plantTree',
-    category: Category.Repeatable,
+    category: Category.Active,
     name: 'Plant a Tree',
     desc:
         'If each of us plants a tree, there will be enough trees to keep Earth in shape for years to come! Show Earth some love by giving new life.',

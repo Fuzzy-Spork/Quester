@@ -1,7 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quester/components/mission_card.dart';
+import 'package:quester/models/mission/mission.dart';
+import 'package:quester/models/mission/missions.dart';
+import 'package:quester/models/user/user.dart';
 
 class DashBoard extends StatefulWidget {
+  final User user;
+  DashBoard({this.user});
   @override
   _DashBoardState createState() => _DashBoardState();
 }
@@ -65,7 +71,7 @@ class _DashBoardState extends State<DashBoard>
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
                         child: Text(
-                          'Manish'.toUpperCase(),
+                          widget.user.name.toUpperCase(),
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               color: Colors.white,
@@ -96,7 +102,7 @@ class _DashBoardState extends State<DashBoard>
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
                         child: Text(
-                          '2',
+                          widget.user.level.toString(),
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               color: Colors.white70,
@@ -140,8 +146,8 @@ class _DashBoardState extends State<DashBoard>
                           ),
                           child: Slider(
                             onChanged: (x) {},
-                            value: height,
-                            min: 0.0,
+                            value: widget.user.totalXP.toDouble(),
+                            min: 0,
                             max: 100.0,
                           ),
                         ),
@@ -205,7 +211,7 @@ class _DashBoardState extends State<DashBoard>
                       ),
                     ),
                     Container(
-                      height: 80.0,
+                      height: size.height * 0.6,
                       child: new TabBarView(
                         controller: _controller,
                         children: <Widget>[
@@ -232,24 +238,38 @@ class _DashBoardState extends State<DashBoard>
   }
 
   List<Widget> getActive() {
-    List<Widget> lists = [
-      Card(
-        child: Text(
-          'Yay Mission 1',
-          style: TextStyle(color: Colors.black),
-        ),
-      )
-    ];
+    List<Widget> lists = [];
+    for (var mission in missions) {
+      if (mission.category == Category.Active) {
+        lists.add(MissionCard(
+          mission: mission,
+        ));
+      }
+    }
     return lists;
   }
 
   List<Widget> getDaily() {
     List<Widget> lists = [];
+    for (var mission in missions) {
+      if (mission.category == Category.Repeatable) {
+        lists.add(MissionCard(
+          mission: mission,
+        ));
+      }
+    }
     return lists;
   }
 
   List<Widget> getCompleted() {
     List<Widget> lists = [];
+    for (var mission in missions) {
+      if (mission.status == Status.Completed) {
+        lists.add(MissionCard(
+          mission: mission,
+        ));
+      }
+    }
     return lists;
   }
 
