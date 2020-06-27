@@ -65,7 +65,7 @@ flutter:
     - family: MuseoModerno
       fonts:
         - asset: fonts/MuseoModerno-Regular.ttf
-          weight: 400
+          weight: 200
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
