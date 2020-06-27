@@ -23,7 +23,8 @@ class _DashBoardState extends State<DashBoard>
 
   @override
   Widget build(BuildContext context) {
-    var height = 10.0;
+    widget.user.getLevel(context);
+    //var height = 10.0;
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
