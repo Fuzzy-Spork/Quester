@@ -41,7 +41,7 @@ class _LandingPageState extends State<LandingPage> {
                 return GetStarted();
               } else {
                 return DashBoard(
-                  user: snapshot.data.userInDB,
+//                  user: snapshot.data.userInDB,
                 );
               }
             } catch (e) {

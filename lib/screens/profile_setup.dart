@@ -103,7 +103,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                   MaterialPageRoute(
                     builder: (context) {
                       return DashBoard(
-                        user: user,
+//                        user: user,
                       );
                     },
                   ),
