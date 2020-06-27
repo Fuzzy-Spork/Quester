@@ -1,11 +1,30 @@
 import 'dart:ui';
+import 'package:quester/models/user/user.dart';
 import 'package:quester/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:quester/services/storage_service.dart';
 
-class ProfileSetup extends StatelessWidget {
+class ProfileSetup extends StatefulWidget {
+  @override
+  _ProfileSetupState createState() => _ProfileSetupState();
+}
+
+class _ProfileSetupState extends State<ProfileSetup> {
+  StorageService prefs;
+  @override
+  void initState() {
+    super.initState();
+    getPrefs();
+  }
+
+  void getPrefs() async {
+    prefs = await StorageService.getInstance();
+  }
+
   @override
   Widget build(BuildContext context) {
+    String name;
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -35,7 +54,7 @@ class ProfileSetup extends StatelessWidget {
               height: size.height * 0.1,
             ),
             Text(
-              'Enter your name buddy!!',
+              'Enter your Name!',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 19,
@@ -65,6 +84,9 @@ class ProfileSetup extends StatelessWidget {
                     borderSide: BorderSide(color: Colors.white),
                   ),
                 ),
+                onChanged: (value) {
+                  name = value;
+                },
               ),
             ),
             SizedBox(
@@ -72,6 +94,10 @@ class ProfileSetup extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
+                User user =
+                    User(name: name, level: 0, totalXP: 0, xpToNextLevel: 100);
+                prefs.saveUserInDB(user);
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -94,7 +120,7 @@ class ProfileSetup extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Let\'s Save!',
+                    'Continue',
                     style: TextStyle(
                         color: Color(0xFFFF397F),
                         fontSize: 25,
