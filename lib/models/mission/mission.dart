@@ -25,13 +25,14 @@ enum Category {
 
 @JsonSerializable()
 class Mission {
+  String id;
   String name;
   String desc;
   int xp;
   Category category;
   Status status;
 
-  Mission({this.desc, this.name, this.xp, this.category, this.status});
+  Mission({this.id, this.desc, this.name, this.xp, this.category, this.status});
 
   factory Mission.fromJson(Map<String, dynamic> json) =>
       _$MissionFromJson(json);

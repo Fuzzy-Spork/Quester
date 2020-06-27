@@ -2,6 +2,7 @@ import 'mission.dart';
 
 List<Mission> missions = [
   Mission(
+    id: 'plantTree',
     category: Category.Repeatable,
     name: 'Plant a Tree',
     desc:
@@ -10,6 +11,7 @@ List<Mission> missions = [
     status: Status.Inactive,
   ),
   Mission(
+    id: 'startGarden',
     category: Category.Active,
     name: 'Start a garden at your place',
     desc:
@@ -18,6 +20,7 @@ List<Mission> missions = [
     status: Status.Inactive,
   ),
   Mission(
+    id: 'waterPlantsRepeatable',
     category: Category.Repeatable,
     name: 'Water your plants',
     desc: 'Have a garden? A potted plant? Go water\'em all!',
@@ -25,6 +28,7 @@ List<Mission> missions = [
     status: Status.Inactive,
   ),
   Mission(
+    id: 'donate',
     category: Category.Repeatable,
     name: 'Donate to a charity!',
     desc: 'Every bit matter! Help where tou can!',
@@ -32,6 +36,7 @@ List<Mission> missions = [
     status: Status.Inactive,
   ),
   Mission(
+    id: 'adopt',
     category: Category.Repeatable,
     name: 'Adopt from a shelter!',
     desc: 'Give someone a new home!',
