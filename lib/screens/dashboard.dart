@@ -18,12 +18,12 @@ class _DashBoardState extends State<DashBoard>
   @override
   void initState() {
     super.initState();
+    widget.user.getLevel(context);
     _controller = TabController(vsync: this, length: 3);
   }
 
   @override
   Widget build(BuildContext context) {
-    widget.user.getLevel(context);
     //var height = 10.0;
     Size size = MediaQuery.of(context).size;
     return SafeArea(
@@ -241,7 +241,8 @@ class _DashBoardState extends State<DashBoard>
   List<Widget> getActive() {
     List<Widget> lists = [];
     for (var mission in missions) {
-      if (mission.category == Category.Active) {
+      if (mission.category == Category.Active &&
+          mission.status != Status.Completed) {
         lists.add(MissionCard(
           mission: mission,
         ));

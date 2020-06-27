@@ -95,7 +95,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
             GestureDetector(
               onTap: () {
                 User user =
-                    User(name: name, level: 0, totalXP: 70, xpToNextLevel: 100);
+                    User(name: name, level: 0, totalXP: 0, xpToNextLevel: 100);
                 prefs.saveUserInDB(user);
 
                 Navigator.push(
