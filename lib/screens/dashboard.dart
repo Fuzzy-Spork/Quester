@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:quester/screens/bottom_sheet.dart';
 
 class DashBoard extends StatefulWidget {
   @override
@@ -10,8 +10,11 @@ class DashBoard extends StatefulWidget {
 class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
-    var height = 0.0;
+    int height = 50;
     Size size = MediaQuery.of(context).size;
+    double cHeight = size.height * 0.2;
+    Color cColor = Color(0xFF09144B);
+    Color textColor = Colors.white;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFF09144B),
@@ -136,8 +139,8 @@ class _DashBoardState extends State<DashBoard> {
                       child: SliderTheme(
                         data: SliderTheme.of(context).copyWith(
                           thumbColor: Color(0xFFEB1555),
-                          activeTrackColor: Colors.white,
-                          inactiveTrackColor: Color(0xFF09144B),
+                          activeTrackColor: Color(0xFF09144B),
+                          inactiveTrackColor: Colors.grey,
                           overlayColor: Color(0x29EB1555),
                           thumbShape:
                               RoundSliderThumbShape(enabledThumbRadius: 13.0),
@@ -145,12 +148,12 @@ class _DashBoardState extends State<DashBoard> {
                               RoundSliderOverlayShape(overlayRadius: 20.0),
                         ),
                         child: Slider(
-                          value: height,
+                          value: height.toDouble(),
                           min: 0.0,
                           max: 100.0,
                           onChanged: (double newValue) {
                             setState(() {
-                              height = newValue;
+                              height = newValue.round();
                             });
                           },
                         ),
@@ -182,10 +185,202 @@ class _DashBoardState extends State<DashBoard> {
                           ),
                         )
                       ],
-                    )
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15, left: 10),
+                          child: Text(
+                            'Daily Missions',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: SizedBox(
+                        height: cHeight,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            MissionCard(
+                              cHeight: cHeight,
+                              size: size,
+                              cColor: cColor,
+                              textColor: textColor,
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) => SingleChildScrollView(
+                                          child: Container(
+                                              padding: EdgeInsets.only(
+                                                  bottom: MediaQuery.of(context)
+                                                      .viewInsets
+                                                      .bottom),
+                                              child: BottomSheet1()),
+                                        ));
+                              },
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            MissionCard(
+                              cHeight: cHeight,
+                              size: size,
+                              cColor: cColor,
+                              textColor: textColor,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            MissionCard(
+                              cHeight: cHeight,
+                              size: size,
+                              cColor: cColor,
+                              textColor: textColor,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            MissionCard(
+                              cHeight: cHeight,
+                              size: size,
+                              cColor: cColor,
+                              textColor: textColor,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15, left: 10),
+                          child: Text(
+                            'Active Missions',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: SizedBox(
+                        height: cHeight,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            MissionCard(
+                              cHeight: cHeight,
+                              size: size,
+                              cColor: cColor,
+                              textColor: textColor,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            MissionCard(
+                              cHeight: cHeight,
+                              size: size,
+                              cColor: cColor,
+                              textColor: textColor,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            MissionCard(
+                              cHeight: cHeight,
+                              size: size,
+                              cColor: cColor,
+                              textColor: textColor,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            MissionCard(
+                              cHeight: cHeight,
+                              size: size,
+                              cColor: cColor,
+                              textColor: textColor,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MissionCard extends StatelessWidget {
+  const MissionCard(
+      {Key key,
+      @required this.cHeight,
+      @required this.size,
+      @required this.cColor,
+      @required this.textColor,
+      this.onTap})
+      : super(key: key);
+
+  final double cHeight;
+  final Size size;
+  final Color cColor;
+  final Color textColor;
+  final Function onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: cHeight,
+        width: size.height * 0.25,
+        decoration: BoxDecoration(
+            color: cColor, borderRadius: BorderRadius.circular(20)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+              child: Text(
+                'Plant a tree!',
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: textColor,
+                    size: 20,
+                  ),
+                )
+              ],
             )
           ],
         ),
