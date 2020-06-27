@@ -59,7 +59,6 @@ T _$enumDecodeNullable<T>(
 const _$CategoryEnumMap = {
   Category.Repeatable: 'Repeatable',
   Category.Active: 'Active',
-  Category.Completed: 'Completed',
 };
 
 const _$StatusEnumMap = {

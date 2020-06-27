@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:quester/services/storage_service.dart';
 
 part 'mission.g.dart';
 
@@ -20,8 +21,6 @@ enum Category {
   Repeatable,
   @JsonValue('Active')
   Active,
-  @JsonValue('Completed')
-  Completed
 }
 
 @JsonSerializable()
@@ -37,4 +36,13 @@ class Mission {
   factory Mission.fromJson(Map<String, dynamic> json) =>
       _$MissionFromJson(json);
   Map<String, dynamic> toJson() => _$MissionToJson(this);
+
+  void completeMission() async {
+    var prefs = await StorageService.getInstance();
+    var user = prefs.userInDB;
+    if (user != null) {
+      this.status = Status.Completed;
+      user.totalXP += this.xp;
+    }
+  }
 }
