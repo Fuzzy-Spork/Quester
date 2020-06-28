@@ -210,6 +210,8 @@ class _DashBoardState extends State<DashBoard> {
                           children: [
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFF0D5051),
+                              color2: Color(0xFF93FD70),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
@@ -227,6 +229,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFFFC210D),
+                              color2: Color(0xFFF7CE38),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
@@ -244,6 +248,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFFFF3E9D),
+                              color2: Color(0xFF0E1F4D),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
@@ -261,6 +267,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFF4CA9DF),
+                              color2: Color(0xFF292E91),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
@@ -278,6 +286,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFF6CD0FF),
+                              color2: Color(0xFF1C2E4C),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
@@ -322,6 +332,8 @@ class _DashBoardState extends State<DashBoard> {
                           children: [
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFF63E5C5),
+                              color2: Color(0xFF14366F),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
@@ -339,6 +351,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFFFFAE0D),
+                              color2: Color(0xFFF9E866),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
@@ -356,6 +370,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFF23494A),
+                              color2: Color(0xFFBFFFC7),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
@@ -373,6 +389,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFF576182),
+                              color2: Color(0xFF1FC5AB),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
@@ -390,6 +408,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             MissionCard(
                               mission: Mission(name: 'Plant a Tree!!', xp: 10),
+                              color1: Color(0xFFF03A3A),
+                              color2: Color(0xFFDFB6A2),
                               onTap: () {
                                 showModalBottomSheet(
                                     context: context,
