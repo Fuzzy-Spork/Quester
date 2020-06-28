@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quester/components/mission_card.dart';
 import 'package:quester/models/mission/mission.dart';
 import 'bottom_sheet.dart';
+import 'package:quester/screens/splash_screen.dart';
 
 class DashBoard extends StatefulWidget {
   @override
