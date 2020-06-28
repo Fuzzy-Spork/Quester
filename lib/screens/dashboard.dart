@@ -274,7 +274,7 @@ class _DashBoardState extends State<DashBoard> {
         try {
           if (mission.completionReport.completionDate
               .difference(DateTime.now())
-              .inDays <
+              .inDays >
               1) {
             lists.add(MissionCard(
               mission: mission,
@@ -304,15 +304,3 @@ class _DashBoardState extends State<DashBoard> {
   }
 }
 
-//[
-//MissionCard(
-//mission: Mission(name: 'Plant a Tree!!', xp: 10),
-//color1: Color(0xFF63E5C5),
-//color2: Color(0xFF14366F),
-//
-//),
-//MissionCard(
-//mission: Mission(name: 'Plant a Tree!!', xp: 10),
-//color1: Color(0xFFFFAE0D),
-//color2: Color(0xFFF9E866),
-//
