@@ -1,39 +1,63 @@
+
 import 'package:flutter/material.dart';
 import 'package:quester/models/mission/mission.dart';
 
-class MissionCard extends StatefulWidget {
-  final Mission mission;
-  final Function onTap;
-  final Color color1;
-  final Color color2;
-  MissionCard({
-    this.mission,
-    this.onTap,
-    this.color1,
-    this.color2,
-  });
-  @override
-  _MissionCardState createState() => _MissionCardState();
-}
+import 'bottom_sheet.dart';
 
-class _MissionCardState extends State<MissionCard> {
+
+
+class MissionCard extends StatelessWidget {
+  final Mission mission;
+  MissionCard({this.mission});
+  final List<LinearGradient> gradients = [
+    LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFFF03A3A), Color(0xFFDFB6A2)]),
+    LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFF576182), Color(0xFF1FC5AB)]),
+    LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFF23494A), Color(0xFFBFFFC7)]),
+    LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFFFFAE0D), Color(0xFFF9E866)]),
+    LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFF63E5C5), Color(0xFF14366F)]),
+
+  ];
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: GestureDetector(
-        onTap: widget.onTap,
+        onTap: () {
+          showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (context) => SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context)
+                          .viewInsets
+                          .bottom),
+                  child: BottomSheet1(mission: mission,),
+                ),
+              ));
+        },
         child: Container(
           height: 110,
           width: 150,
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [widget.color1, widget.color2]),
+              gradient: (gradients..shuffle()).first,
               borderRadius: BorderRadius.circular(20)),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -41,7 +65,7 @@ class _MissionCardState extends State<MissionCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.mission.name,
+                 mission.name,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -49,7 +73,7 @@ class _MissionCardState extends State<MissionCard> {
                   ),
                 ),
                 Text(
-                  widget.mission.xp.toString() + ' XP',
+                  mission.xp.toString() + ' XP',
                   style: TextStyle(fontSize: 12, color: Colors.white70),
                 ),
                 Spacer(),

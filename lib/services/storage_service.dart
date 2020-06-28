@@ -1,9 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:quester/models/user/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class StorageService {
+class StorageService with ChangeNotifier{
   static StorageService _instance;
   static SharedPreferences _sharedPreferences;
 
@@ -13,11 +14,13 @@ class StorageService {
   User get userInDB {
     var userJson = _getFromDisk(UserKey);
     print(User.fromJson(jsonDecode(userJson)).name);
+
     return User.fromJson(jsonDecode(userJson));
   }
 
   void saveUserInDB(User userToSave) {
     saveStringToDisk(UserKey, json.encode(userToSave.toJson()));
+    notifyListeners();
   }
 
   static Future<StorageService> getInstance() async {
