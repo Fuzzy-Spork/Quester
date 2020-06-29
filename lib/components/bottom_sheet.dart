@@ -12,7 +12,7 @@ class BottomSheet1 extends StatelessWidget {
     return Container(
       color: Color(0xff757575),
       child: Container(
-        height: size.height * 0.4,
+        height: size.height * 0.50,
         padding:
             EdgeInsets.only(top: 30.0, left: 20.0, right: 20.0, bottom: 10.0),
         decoration: BoxDecoration(
@@ -32,15 +32,16 @@ class BottomSheet1 extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 8.0,
             ),
             Container(
-              width: 150,
+              margin: EdgeInsets.only(left: 10, right: 10),
+//              width: 150,
               child: Center(
                 child: Text(
                   mission.desc,
                   style: TextStyle(
-                      color: Color(0xFFFF397F), fontSize: 20, letterSpacing: 1),
+                      color: Color(0xFFFF397F), fontSize: 18, letterSpacing: 1),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -68,7 +69,8 @@ class BottomSheet1 extends StatelessWidget {
                 print(id);
                 mission.completeMission(context);
                 Navigator.pop(context);
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoadingScreen2()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => LoadingScreen2()));
               },
               child: Container(
                 height: 55,

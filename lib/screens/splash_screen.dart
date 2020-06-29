@@ -11,7 +11,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 3,
+      seconds: 2,
       loaderColor: Color(0xFFFF397F),
       navigateAfterSeconds: new DashBoard(),
       backgroundColor: Color(0xFF09144B),
