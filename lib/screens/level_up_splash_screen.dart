@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:quester/models/user/user.dart';
+import 'package:quester/screens/dashboard.dart';
 import 'package:quester/screens/splash_orig.dart';
-import 'dashboard.dart';
 
 class LevelUpSplashScreen extends StatefulWidget {
+  final User user;
+  LevelUpSplashScreen({this.user});
   @override
   _LevelUpSplashScreenState createState() => _LevelUpSplashScreenState();
 }
@@ -11,9 +14,11 @@ class _LevelUpSplashScreenState extends State<LevelUpSplashScreen> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 2,
+      fileName: 'assets/Trophy.flr',
+      animation: 'go',
+      seconds: 90000,
       loaderColor: Color(0xFFFF397F),
-      navigateAfterSeconds: new DashBoard(),
+      navigateAfterSeconds: DashBoard(),
       backgroundColor: Color(0xFF09144B),
       loadingText: Text(
         'quester',

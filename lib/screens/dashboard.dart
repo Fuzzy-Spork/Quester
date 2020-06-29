@@ -38,226 +38,237 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     return FutureBuilder(
       future: StorageService.getInstance(),
       builder: (context, AsyncSnapshot<StorageService> snapshot) {
+        if(snapshot.data.userInDB == null){
+          return Container();
+        }else{
 
-        User user = snapshot.data.userInDB;
-
-        return Container(
-          color: Color(0xFF09144B),
-          child: SafeArea(
-            child: Scaffold(
-              backgroundColor: Color(0xFF09144B),
-              body: Column(
-                children: [
-                  Container(
-                    height: size.height * 0.22,
-                    width: size.width,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10),
-                              child: Text(
-                                'q',
-                                style: TextStyle(
-                                  color: Color(0xFFFF397F),
-                                  fontFamily: 'MuseoModerno',
-                                  fontSize: 35,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        Spacer(),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(
-                                'Hey',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(
-                                user.name.toUpperCase(),
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 1,
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(
-                                'Level',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(
-                                (((user.totalXP ~/ 50)).toString()),
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Colors.white70,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 30,
-                        )
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: size.height * 0.67,
+          User user = snapshot.data.userInDB;
+//          if(user.totalXP%50 == 0 && user.totalXP != 0){
+//            Navigator.push(context, MaterialPageRoute(builder: (context)=>LevelUpSplashScreen()));
+//          }
+          return Container(
+            color: Color(0xFF09144B),
+            child: SafeArea(
+              child: Scaffold(
+                backgroundColor: Color(0xFF09144B),
+                body: Column(
+                  children: [
+                    Container(
+                      height: size.height * 0.22,
                       width: size.width,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius:
-                              BorderRadius.only(topLeft: Radius.circular(80))),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             children: [
                               Spacer(),
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 15, right: 10),
+                                padding: const EdgeInsets.only(right: 10),
                                 child: Text(
-                                  'Level Up',
+                                  'q',
                                   style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          getSlider(user),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 60),
-                                child: Text(
-                                  (((user.totalXP ~/ 50)) * 50).toString(),
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Text(
-                                  (((user.totalXP ~/ 50) + 1) * 50).toString(),
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFFFF397F),
+                                    fontFamily: 'MuseoModerno',
+                                    fontSize: 35,
                                   ),
                                 ),
                               )
                             ],
                           ),
+                          Spacer(),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 20, left: 10),
+                                padding: const EdgeInsets.only(left: 10),
                                 child: Text(
-                                  'Repeatable Missions',
+                                  'Hey',
+                                  textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w900,
                                   ),
                                 ),
                               ),
-                              Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  user.name.toUpperCase(),
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                              )
                             ],
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: SizedBox(
-                              height: size.height * 0.2,
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: getDaily(),
-                              ),
-                            ),
+                          SizedBox(
+                            height: 1,
                           ),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 15, left: 10),
+                                padding: const EdgeInsets.only(left: 10),
                                 child: Text(
-                                  'Active Missions',
+                                  'Level',
+                                  textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    color: Colors.grey,
+                                    color: Colors.white70,
                                     fontSize: 15,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w900,
                                   ),
                                 ),
                               ),
-                              Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  (((user.totalXP ~/ 50)).toString()),
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                              )
                             ],
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: SizedBox(
-                              height: size.height * 0.2,
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: getActive(),
-                              ),
-                            ),
-                          ),
+                          SizedBox(
+                            height: 30,
+                          )
                         ],
                       ),
                     ),
-                  )
-                ],
+                    Expanded(
+                      child: Container(
+                        height: size.height * 0.67,
+                        width: size.width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                            BorderRadius.only(topLeft: Radius.circular(80))),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Spacer(),
+                                Padding(
+                                  padding:
+                                  const EdgeInsets.only(top: 15, right: 10),
+                                  child: Text(
+                                    'Level Up',
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            getSlider(user),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 60),
+                                  child: Text(
+                                    (((user.totalXP ~/ 50)) * 50).toString(),
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 20),
+                                  child: Text(
+                                    (((user.totalXP ~/ 50) + 1) * 50).toString(),
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding:
+                                  const EdgeInsets.only(top: 20, left: 10),
+                                  child: Text(
+                                    'Repeatable Missions',
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: SizedBox(
+                                height: size.height * 0.2,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: getDaily(),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding:
+                                  const EdgeInsets.only(top: 15, left: 10),
+                                  child: Text(
+                                    'Active Missions',
+                                    style: TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                              ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: SizedBox(
+                                height: size.height * 0.2,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: getActive(),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        );
+          );
+        }
+//        print(snapshot.data);
+
+
+
       },
     );
   }

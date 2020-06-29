@@ -5,6 +5,8 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
+  final String fileName;
+  final String animation;
   final int seconds;
   final Text title;
   final Color backgroundColor;
@@ -19,6 +21,8 @@ class SplashScreen extends StatefulWidget {
   final Gradient gradientBackground;
   SplashScreen(
       {
+        this.animation,
+        this.fileName,
         this.loaderColor,
         @required this.seconds,
         this.photoSize,
@@ -98,9 +102,9 @@ class _SplashScreenState extends State<SplashScreen> {
                           Container(
                             height: size.height * 0.5,
                             child: new FlareActor(
-                              'assets/RotatingEarth.flr',
+                              widget.fileName,
                               isPaused: false,
-                              animation: 'Preview2',
+                              animation: widget.animation,
                             ),
                           ),
                           new Padding(

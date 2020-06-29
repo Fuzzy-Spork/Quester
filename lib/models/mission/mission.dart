@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:quester/models/completion_report/completion_report.dart';
+import 'package:quester/screens/level_up_splash_screen.dart';
 import 'package:quester/services/storage_service.dart';
 
 part 'mission.g.dart';
@@ -54,7 +56,15 @@ class Mission {
     var user = prefs.userInDB;
     if (user != null) {
       this.status = Status.Completed;
+      var prevExp = user.totalXP;
       user.totalXP += this.xp;
+      print((((user.totalXP ~/ 50)+1)*50));
+      print(user.totalXP);
+      if(user.totalXP>=(((prevExp ~/ 50)+1)*50)){
+        print('level up');
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>LevelUpSplashScreen()));
+      }
+      user.level = ((user.totalXP ~/ 50)+1);
       prefs.saveUserInDB(user);
     }
   }
