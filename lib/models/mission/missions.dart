@@ -65,11 +65,20 @@ List<Mission> missions = [
      xp: 50,
      status: Status.Inactive,completionReport: CompletionReport(),
    ),
-  // Mission(
-  //   category: Category.Repeatable,
-  //   name: '',
-  //   desc: '',
-  //   xp: 50,
-  //   status: Status.Inactive,completionReport: CompletionReport(),
-  // ),
+   Mission(
+     category: Category.Repeatable,
+     covid: true,
+     name: 'Wear a Mask',
+     desc: 'Never hurts to wear a mask! Might save your life!',
+     xp: 5,
+     status: Status.Inactive,completionReport: CompletionReport(),
+   ),
+  Mission(
+    category: Category.Repeatable,
+    covid: true,
+    name: 'Work From Home',
+    desc: '',
+    xp: 5,
+    status: Status.Inactive,completionReport: CompletionReport(),
+  ),
 ];

@@ -18,6 +18,7 @@ Mission _$MissionFromJson(Map<String, dynamic> json) {
         ? null
         : CompletionReport.fromJson(
             json['completionReport'] as Map<String, dynamic>),
+    covid: json['covid'] as bool,
   );
 }
 
@@ -28,6 +29,7 @@ Map<String, dynamic> _$MissionToJson(Mission instance) => <String, dynamic>{
       'xp': instance.xp,
       'category': _$CategoryEnumMap[instance.category],
       'status': _$StatusEnumMap[instance.status],
+      'covid': instance.covid,
       'completionReport': instance.completionReport?.toJson(),
     };
 
@@ -66,6 +68,7 @@ T _$enumDecodeNullable<T>(
 const _$CategoryEnumMap = {
   Category.Repeatable: 'Repeatable',
   Category.Active: 'Active',
+  Category.COVID: 'COVID',
 };
 
 const _$StatusEnumMap = {

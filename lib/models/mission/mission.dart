@@ -24,6 +24,9 @@ enum Category {
   Repeatable,
   @JsonValue('Active')
   Active,
+@JsonValue('COVID')
+COVID,
+
 }
 
 @JsonSerializable()
@@ -34,6 +37,7 @@ class Mission {
   int xp;
   Category category;
   Status status;
+  bool covid;
   CompletionReport completionReport;
 
   Mission({
@@ -44,6 +48,7 @@ class Mission {
     this.category,
     this.status,
     this.completionReport,
+    this.covid = false,
   });
 
   factory Mission.fromJson(Map<String, dynamic> json) =>

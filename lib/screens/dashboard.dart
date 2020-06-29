@@ -231,58 +231,96 @@ class _DashBoardState extends State<DashBoard> {
                                 )
                               ],
                             ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 20, left: 10),
-                                  child: Text(
-                                    'Repeatable Missions',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+
+                            SizedBox(
+                              height: size.height* 0.6,
+                              child: ListView(
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                        const EdgeInsets.only(top: 20, left: 10),
+                                        child: Text(
+                                          'COVID Missions',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: SizedBox(
+                                      height: size.height * 0.2,
+                                      child: ListView(
+                                        scrollDirection: Axis.horizontal,
+                                        children: getCOVID(),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Spacer(),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(10),
-                              child: SizedBox(
-                                height: size.height * 0.2,
-                                child: ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  children: getDaily(),
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 15, left: 10),
-                                  child: Text(
-                                    'Active Missions',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 20, left: 10),
+                                        child: Text(
+                                          'Repeatable Missions',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: SizedBox(
+                                      height: size.height * 0.2,
+                                      child: ListView(
+                                        scrollDirection: Axis.horizontal,
+                                        children: getDaily(),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Spacer(),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(10),
-                              child: SizedBox(
-                                height: size.height * 0.2,
-                                child: ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  children: getActive(),
-                                ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 15, left: 10),
+                                        child: Text(
+                                          'Active Missions',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: SizedBox(
+                                      height: size.height * 0.2,
+                                      child: ListView(
+                                        scrollDirection: Axis.horizontal,
+                                        children: getActive(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -299,7 +337,34 @@ class _DashBoardState extends State<DashBoard> {
       },
     );
   }
-
+  List<Widget> getCOVID(){
+    List<Widget> lists = [];
+    for(var mission in missions){
+      if(mission.covid){
+        try {
+          if (mission.completionReport.completionDate
+              .difference(DateTime.now())
+              .inDays >
+              1) {
+            lists.add(MissionCard(
+              mission: mission,
+            ));
+          }
+        } catch (e) {
+          lists.add(MissionCard(
+            mission: mission,
+          ));
+        }
+      }
+    }
+    if(lists.isEmpty){
+      lists.add(Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Center(child: Text('No Missions available\nCome back Later!')),
+      ));
+    }
+    return lists;
+  }
   List<Widget> getDaily() {
     List<Widget> lists = [];
     for (var mission in missions) {
