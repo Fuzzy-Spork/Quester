@@ -1,10 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:quester/models/mission/mission.dart';
 
 import 'bottom_sheet.dart';
-
-
 
 class MissionCard extends StatelessWidget {
   final Mission mission;
@@ -30,7 +27,6 @@ class MissionCard extends StatelessWidget {
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [Color(0xFF63E5C5), Color(0xFF14366F)]),
-
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,17 +40,17 @@ class MissionCard extends StatelessWidget {
               context: context,
               isScrollControlled: true,
               builder: (context) => SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context)
-                          .viewInsets
-                          .bottom),
-                  child: BottomSheet1(mission: mission,),
-                ),
-              ));
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: BottomSheet1(
+                        mission: mission,
+                      ),
+                    ),
+                  ));
         },
         child: Container(
-          height: 110,
+          height: 115,
           width: 150,
           decoration: BoxDecoration(
               gradient: (gradients..shuffle()).first,
@@ -65,10 +61,10 @@ class MissionCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                 mission.name,
+                  mission.name,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

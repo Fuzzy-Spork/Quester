@@ -6,7 +6,6 @@ import 'package:quester/models/user/user.dart';
 import 'package:quester/models/mission/missions.dart';
 import 'package:quester/services/storage_service.dart';
 
-
 class DashBoard extends StatefulWidget {
   final User user;
   DashBoard({this.user});
@@ -15,8 +14,7 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
-
-  Widget getSlider(User user){
+  Widget getSlider(User user) {
     return Padding(
       padding: const EdgeInsets.only(left: 50, right: 10),
       child: SliderTheme(
@@ -25,30 +23,25 @@ class _DashBoardState extends State<DashBoard> {
           activeTrackColor: Color(0xFF09144B),
           inactiveTrackColor: Colors.grey,
           overlayColor: Color(0x29EB1555),
-          thumbShape:
-          RoundSliderThumbShape(enabledThumbRadius: 13.0),
-          overlayShape:
-          RoundSliderOverlayShape(overlayRadius: 13.0),
+          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 13.0),
+          overlayShape: RoundSliderOverlayShape(overlayRadius: 13.0),
         ),
         child: Slider(
-          onChanged: (x){
-
-          },
+          onChanged: (x) {},
           value: user.totalXP.toDouble(),
           min: (((user.totalXP ~/ 50)) * 50).toDouble(),
           max: (((user.totalXP ~/ 50) + 1) * 50).toDouble(),
-
         ),
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
     return FutureBuilder(
       future: StorageService.getInstance(),
-      builder: (context, AsyncSnapshot<StorageService> snapshot){
+      builder: (context, AsyncSnapshot<StorageService> snapshot) {
         User user = snapshot.data.userInDB;
 
         return Container(
@@ -59,7 +52,7 @@ class _DashBoardState extends State<DashBoard> {
               body: Column(
                 children: [
                   Container(
-                    height: size.height * 0.20,
+                    height: size.height * 0.22,
                     width: size.width,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +103,7 @@ class _DashBoardState extends State<DashBoard> {
                           ],
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 1,
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -153,14 +146,15 @@ class _DashBoardState extends State<DashBoard> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius:
-                          BorderRadius.only(topLeft: Radius.circular(80))),
+                              BorderRadius.only(topLeft: Radius.circular(80))),
                       child: Column(
                         children: [
                           Row(
                             children: [
                               Spacer(),
                               Padding(
-                                padding: const EdgeInsets.only(top: 15, right: 10),
+                                padding:
+                                    const EdgeInsets.only(top: 15, right: 10),
                                 child: Text(
                                   'Level Up',
                                   style: TextStyle(
@@ -190,8 +184,7 @@ class _DashBoardState extends State<DashBoard> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Text(
-                                  (((user.totalXP ~/ 50) + 1) * 50)
-                                      .toString(),
+                                  (((user.totalXP ~/ 50) + 1) * 50).toString(),
                                   style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 15,
@@ -201,11 +194,11 @@ class _DashBoardState extends State<DashBoard> {
                               )
                             ],
                           ),
-
                           Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 10),
+                                padding:
+                                    const EdgeInsets.only(top: 20, left: 10),
                                 child: Text(
                                   'Repeatable Missions',
                                   style: TextStyle(
@@ -231,7 +224,8 @@ class _DashBoardState extends State<DashBoard> {
                           Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(top: 15, left: 10),
+                                padding:
+                                    const EdgeInsets.only(top: 15, left: 10),
                                 child: Text(
                                   'Active Missions',
                                   style: TextStyle(
@@ -264,17 +258,17 @@ class _DashBoardState extends State<DashBoard> {
           ),
         );
       },
-
     );
   }
+
   List<Widget> getDaily() {
     List<Widget> lists = [];
     for (var mission in missions) {
       if (mission.category == Category.Repeatable) {
         try {
           if (mission.completionReport.completionDate
-              .difference(DateTime.now())
-              .inDays >
+                  .difference(DateTime.now())
+                  .inDays >
               1) {
             lists.add(MissionCard(
               mission: mission,
@@ -303,4 +297,3 @@ class _DashBoardState extends State<DashBoard> {
     return lists;
   }
 }
-
