@@ -42,6 +42,7 @@ class _DashBoardState extends State<DashBoard> {
     return FutureBuilder(
       future: StorageService.getInstance(),
       builder: (context, AsyncSnapshot<StorageService> snapshot) {
+
         User user = snapshot.data.userInDB;
 
         return Container(
