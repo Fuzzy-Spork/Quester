@@ -10,6 +10,7 @@ class MissionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
@@ -53,7 +54,7 @@ class MissionCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: size.height * 0.01,
                 ),
                 Text(
                   'Reward: ' + mission.xp.toString() + ' XP',

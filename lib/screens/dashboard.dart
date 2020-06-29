@@ -38,15 +38,13 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
     return FutureBuilder(
       future: StorageService.getInstance(),
       builder: (context, AsyncSnapshot<StorageService> snapshot) {
-        if(snapshot.data.userInDB == null){
+        if (snapshot.data.userInDB == null) {
           return Container();
-        }else{
-
+        } else {
           User user = snapshot.data.userInDB;
 //          if(user.totalXP%50 == 0 && user.totalXP != 0){
 //            Navigator.push(context, MaterialPageRoute(builder: (context)=>LevelUpSplashScreen()));
@@ -67,14 +65,27 @@ class _DashBoardState extends State<DashBoard> {
                           Row(
                             children: [
                               Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: Text(
-                                  'q',
-                                  style: TextStyle(
-                                    color: Color(0xFFFF397F),
-                                    fontFamily: 'MuseoModerno',
-                                    fontSize: 35,
+                              GestureDetector(
+                                onDoubleTap: () {
+                                  showAboutDialog(
+                                      context: context,
+                                      applicationName: 'Quester',
+                                      children: [
+                                        Text('Created by Sehej and Manish'),
+                                        SizedBox(height: size.height *0.01,),
+                                        Text('Rotating Earth Animation created in Rive, forked from Derek Knight'),
+                                        Text('Rotating Trophy Animation created in Rive, forked from Angela Boyadjian'),
+                                      ]);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: Text(
+                                    'q',
+                                    style: TextStyle(
+                                      color: Color(0xFFFF397F),
+                                      fontFamily: 'MuseoModerno',
+                                      fontSize: 35,
+                                    ),
                                   ),
                                 ),
                               )
@@ -152,8 +163,8 @@ class _DashBoardState extends State<DashBoard> {
                         width: size.width,
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(80))),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(80))),
                         child: Column(
                           children: [
                             Row(
@@ -161,7 +172,7 @@ class _DashBoardState extends State<DashBoard> {
                                 Spacer(),
                                 Padding(
                                   padding:
-                                  const EdgeInsets.only(top: 15, right: 10),
+                                      const EdgeInsets.only(top: 15, right: 10),
                                   child: Text(
                                     'Level Up',
                                     style: TextStyle(
@@ -191,7 +202,8 @@ class _DashBoardState extends State<DashBoard> {
                                 Padding(
                                   padding: const EdgeInsets.only(right: 20),
                                   child: Text(
-                                    (((user.totalXP ~/ 50) + 1) * 50).toString(),
+                                    (((user.totalXP ~/ 50) + 1) * 50)
+                                        .toString(),
                                     style: TextStyle(
                                       color: Colors.grey,
                                       fontSize: 15,
@@ -205,7 +217,7 @@ class _DashBoardState extends State<DashBoard> {
                               children: [
                                 Padding(
                                   padding:
-                                  const EdgeInsets.only(top: 20, left: 10),
+                                      const EdgeInsets.only(top: 20, left: 10),
                                   child: Text(
                                     'Repeatable Missions',
                                     style: TextStyle(
@@ -232,7 +244,7 @@ class _DashBoardState extends State<DashBoard> {
                               children: [
                                 Padding(
                                   padding:
-                                  const EdgeInsets.only(top: 15, left: 10),
+                                      const EdgeInsets.only(top: 15, left: 10),
                                   child: Text(
                                     'Active Missions',
                                     style: TextStyle(
@@ -266,9 +278,6 @@ class _DashBoardState extends State<DashBoard> {
           );
         }
 //        print(snapshot.data);
-
-
-
       },
     );
   }

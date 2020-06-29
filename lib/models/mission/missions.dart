@@ -16,7 +16,7 @@ List<Mission> missions = [
   Mission(
     id: 'startGarden',
     category: Category.Active,
-    name: 'Start a garden at your place',
+    name: 'Start a garden!',
     desc:
         'Gardens needn\'t be huge, start small, get a potted plant, or a kitchen garden. Whatever works for you! Start Somewhere!',
     xp: 40,

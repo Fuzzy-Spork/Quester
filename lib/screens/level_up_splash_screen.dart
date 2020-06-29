@@ -16,7 +16,7 @@ class _LevelUpSplashScreenState extends State<LevelUpSplashScreen> {
     return SplashScreen(
       fileName: 'assets/Trophy.flr',
       animation: 'go',
-      seconds: 90000,
+      seconds: 5,
       loaderColor: Color(0xFFFF397F),
       navigateAfterSeconds: DashBoard(),
       backgroundColor: Color(0xFF09144B),
