@@ -4,6 +4,7 @@ import 'package:quester/components/mission_card.dart';
 import 'package:quester/models/mission/mission.dart';
 import 'package:quester/models/user/user.dart';
 import 'package:quester/models/mission/missions.dart';
+import 'package:quester/screens/rename.dart';
 import 'package:quester/services/storage_service.dart';
 
 class DashBoard extends StatefulWidget {
@@ -72,9 +73,13 @@ class _DashBoardState extends State<DashBoard> {
                                       applicationName: 'Quester',
                                       children: [
                                         Text('Created by Sehej and Manish'),
-                                        SizedBox(height: size.height *0.01,),
-                                        Text('Rotating Earth Animation created in Rive, forked from Derek Knight'),
-                                        Text('Rotating Trophy Animation created in Rive, forked from Angela Boyadjian'),
+                                        SizedBox(
+                                          height: size.height * 0.01,
+                                        ),
+                                        Text(
+                                            'Rotating Earth Animation created in Rive, forked from Derek Knight'),
+                                        Text(
+                                            'Rotating Trophy Animation created in Rive, forked from Angela Boyadjian'),
                                       ]);
                                 },
                                 child: Padding(
@@ -116,6 +121,19 @@ class _DashBoardState extends State<DashBoard> {
                                       color: Colors.white,
                                       fontSize: 25,
                                       fontWeight: FontWeight.w300),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Rename()));
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 5, bottom: 5),
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: Color(0xFFFF397F).withOpacity(0.5),
+                                    size: 20,
+                                  ),
                                 ),
                               )
                             ],

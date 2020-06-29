@@ -5,7 +5,7 @@ part 'user.g.dart';
 
 @JsonSerializable()
 class User {
-  final String name;
+  String name;
   int level;
   int xpToNextLevel;
   int totalXP;
