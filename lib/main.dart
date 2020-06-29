@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/dashboard.dart';
+import 'package:quester/screens/splash_screen.dart';
 import 'screens/get_started.dart';
 import 'services/storage_service.dart';
 
@@ -40,9 +40,7 @@ class _LandingPageState extends State<LandingPage> {
                 print('new user');
                 return GetStarted();
               } else {
-                return DashBoard(
-//                  user: snapshot.data.userInDB,
-                    );
+                return LoadingScreen();
               }
             } catch (e) {
               print('Error: $e');
