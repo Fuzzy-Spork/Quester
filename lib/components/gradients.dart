@@ -1,29 +1,38 @@
-//Color(0xFF014872), Color(0xFFD7EDE1)
-//Color(0xFFE1415F), Color(0xFF5B1A1A)
-//Color(0xFF29198F), Color(0xFFCB4398)
-//Color(0xFF38A2D7), Color(0xFF561139)
-//Color(0xFFFBC34A), Color(0xFFEBA39C)
-//Color(0xFFD14872), Color(0xFFD7EDE1)
-//Color(0xFFE21C34), Color(0xFF500B28)
-//Color(0xFF131C85), Color(0xFF8278D9)
-//Color(0xFFB51F1A), Color(0xFFF9BEF6)
-//Color(0xFF121C84), Color(0xFF8278DA)
-//Color(0xFF7200FF), Color(0xFFF000FF)
-//Color(0xFFFF0078), Color(0xFFF6EFA7)
-//Color(0xFFFD986A), Color(0xFFFFC9C9)
-//Color(0xFFFF3E9D), Color(0xFFDE1F4D)
-//Color(0xFF5D69BE), Color(0xFFC89FEB)
-//Color(0xFF00D8FF), Color(0xFF367AD8)
-//Color(0xFFDC7D4E), Color(0xFFFFDD8D)
-//Color(0xFFA9F99E), Color(0xFF46ADD5)
-//Color(0xFF0CCDA3), Color(0xFFC1FCD3)
-//Color(0xFF0D5051), Color(0xFF93FD70)
-//Color(0xFFFC210D), Color(0xFFF7CE38)
-//Color(0xFFFF3E9D), Color(0xFF0E1F4D)
-//Color(0xFF4CA9DF), Color(0xFF292E91)
-//Color(0xFF6CD0FF), Color(0xFF1C2E4C)
-//Color(0xFF63E5C5), Color(0xFF14366F)
-//Color(0xFFFFAE0D), Color(0xFFF9E866)
-//Color(0xFF23494A), Color(0xFFBFFFC7)
-//Color(0xFF576182), Color(0xFF1FC5AB)
-//Color(0xFFF03A3A), Color(0xFFDFB6A2)
+import 'dart:ui';
+
+var gradients = [
+  [Color(0xFF014872), Color(0xFFD7EDE1)],
+  [Color(0xFFF03A3A), Color(0xFFDFB6A2)],
+  [Color(0xFF576182), Color(0xFF1FC5AB)],
+  [Color(0xFF23494A), Color(0xFFBFFFC7)],
+  [Color(0xFFFFAE0D), Color(0xFFF9E866)],
+  [Color(0xFF63E5C5), Color(0xFF14366F)],
+  [Color(0xFFE1415F), Color(0xFF5B1A1A)],
+  [Color(0xFF29198F), Color(0xFFCB4398)],
+  [Color(0xFF38A2D7), Color(0xFF561139)],
+  [Color(0xFFFBC34A), Color(0xFFEBA39C)],
+  [Color(0xFFD14872), Color(0xFFD7EDE1)],
+  [Color(0xFFE21C34), Color(0xFF500B28)],
+  [Color(0xFF131C85), Color(0xFF8278D9)],
+  [Color(0xFFB51F1A), Color(0xFFF9BEF6)],
+  [Color(0xFF121C84), Color(0xFF8278DA)],
+  [Color(0xFF7200FF), Color(0xFFF000FF)],
+  [Color(0xFFFF0078), Color(0xFFF6EFA7)],
+  [Color(0xFFFD986A), Color(0xFFFFC9C9)],
+  [Color(0xFFFF3E9D), Color(0xFFDE1F4D)],
+  [Color(0xFF5D69BE), Color(0xFFC89FEB)],
+  [Color(0xFF00D8FF), Color(0xFF367AD8)],
+  [Color(0xFFDC7D4E), Color(0xFFFFDD8D)],
+  [Color(0xFFA9F99E), Color(0xFF46ADD5)],
+  [Color(0xFF0CCDA3), Color(0xFFC1FCD3)],
+  [Color(0xFF0D5051), Color(0xFF93FD70)],
+  [Color(0xFFFC210D), Color(0xFFF7CE38)],
+  [Color(0xFFFF3E9D), Color(0xFF0E1F4D)],
+  [Color(0xFF4CA9DF), Color(0xFF292E91)],
+  [Color(0xFF6CD0FF), Color(0xFF1C2E4C)],
+  [Color(0xFF63E5C5), Color(0xFF14366F)],
+  [Color(0xFFFFAE0D), Color(0xFFF9E866)],
+  [Color(0xFF23494A), Color(0xFFBFFFC7)],
+  [Color(0xFF576182), Color(0xFF1FC5AB)],
+  [Color(0xFFF03A3A), Color(0xFFDFB6A2)],
+];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quester/screens/splash_orig.dart';
 import 'dashboard.dart';
-import 'package:splashscreen/splashscreen.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
