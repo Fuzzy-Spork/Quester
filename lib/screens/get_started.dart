@@ -27,7 +27,7 @@ class GetStarted extends StatelessWidget {
               height: size.height * 0.01,
             ),
             Text(
-              'Do you want to save\nthe planet.'.toUpperCase(),
+              'Do you want to save\nthe planet?'.toUpperCase(),
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.white,
