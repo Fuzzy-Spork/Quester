@@ -10,3 +10,4 @@ To use this app, install the Quester.apk file on your android phone. To test thi
 
 ```flutter run```
 
+Demo of the app on youtube: [https://youtube.com/shorts/bSuqX3IK5nI?feature=share](https://youtube.com/shorts/bSuqX3IK5nI?feature=share)
